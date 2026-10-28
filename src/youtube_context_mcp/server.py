@@ -13,8 +13,15 @@ from youtube_context_mcp import links, media, metadata, transcripts
 mcp = FastMCP(
     "youtube-context-mcp",
     transport_security=TransportSecuritySettings(
-        enable_dns_rebinding_protection=False
-    )
+        enable_dns_rebinding_protection=True,
+        allowed_hosts=[
+            "youtube-context-mcp.onrender.com",
+            "youtube-context-mcp.onrender.com:*",
+        ],
+        allowed_origins=[
+            "https://youtube-context-mcp.onrender.com",
+        ],
+    ),
 )
 
 
