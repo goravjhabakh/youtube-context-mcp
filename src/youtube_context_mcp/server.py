@@ -6,10 +6,16 @@ import argparse
 from typing import TypedDict
 
 from mcp.server.fastmcp import FastMCP, Image
+from mcp.server.transport_security import TransportSecuritySettings
 
 from youtube_context_mcp import links, media, metadata, transcripts
 
-mcp = FastMCP("youtube-context")
+mcp = FastMCP(
+    "youtube-context-mcp",
+    transport_security=TransportSecuritySettings(
+        enable_dns_rebinding_protection=False
+    )
+)
 
 
 class TranscriptInfo(TypedDict):
